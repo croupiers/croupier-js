@@ -29,10 +29,11 @@
     "test": "grunt nodeunit"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-coffeelint": "~0.0.7",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.4.0",
+    "grunt-contrib-coffee": "~0.7.0",
     "grunt": "~0.4.1"
   },
-  "keywords": []
+  "keywords": ["distribution", "random"]
 }
