@@ -28,11 +28,15 @@
   "scripts": {
     "test": "grunt nodeunit"
   },
+  "dependencies": {
+    "commander": "~2.0.0"
+  },
   "devDependencies": {
     "grunt-coffeelint": "~0.0.7",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.4.0",
     "grunt-contrib-coffee": "~0.7.0",
+    "grunt-exec": "~0.4.2",
     "grunt": "~0.4.1"
   },
   "keywords": ["distribution", "random"]
