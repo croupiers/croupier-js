@@ -62,4 +62,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-exec')
 
   # Default task.
+  grunt.registerTask('test', ['coffee:app', 'coffee:tests', 'nodeunit'])
   grunt.registerTask('default', ['coffeelint', 'coffee:app', 'coffee:bin', 'coffee:tests', "addSheBang", 'nodeunit'])
