@@ -13,7 +13,7 @@ module.exports = (grunt) ->
           sourceMap: true
         expand: true
         flatten: true
-        src: ['src/*.coffee']
+        src: ['src/**/*.coffee']
         dest: 'lib/'
         ext: '.js'
       bin:
@@ -24,7 +24,7 @@ module.exports = (grunt) ->
           sourceMap: false
         expand: true
         flatten: true
-        src: ['src-test/*.coffee']
+        src: ['src-test/**/*.coffee']
         dest: 'test/'
         ext: '.js'
 
