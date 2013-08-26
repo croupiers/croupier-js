@@ -25,6 +25,18 @@ exports['generator'] =
     @constantGenerator = gen.gen(-> 1)
     done()
 
+  'responds to map': (test) ->
+    test.equal(typeof @constantGenerator.map, "function", "responds to map")
+    test.done()
+
+  'map acts like a map higher order function': (test) ->
+    map = @constantGenerator.map((x) -> 2 * x)
+    a = map.next()
+    test.equal(a.value, 2, "maps values to fn(values)")
+    b = map.next()
+    test.equal(b.value, 2, "maps values to fn(values)")
+    test.done()
+
   'returns an object': (test) ->
     first = @constantGenerator.next()
     test.equal(first.value, 1, "expected next.value to be one")
