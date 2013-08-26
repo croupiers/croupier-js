@@ -23,6 +23,9 @@ gen = require('../lib/generator.js').generator
 exports['generator'] =
   setUp: (done) ->
     @constantGenerator = gen.gen(-> 1)
+    @sucGenerator = gen.gen do ->
+      i = 0
+      -> ++i
     done()
 
   'responds to map': (test) ->
@@ -35,6 +38,24 @@ exports['generator'] =
     test.equal(a.value, 2, "maps values to fn(values)")
     b = map.next()
     test.equal(b.value, 2, "maps values to fn(values)")
+    test.done()
+
+  'responds to filter': (test) ->
+    test.equal(typeof @constantGenerator.filter, "function", "responds to filter")
+    test.done()
+
+  'filter returns only values that pass the filter': (test) ->
+    filtered = @sucGenerator.filter (n) -> n%2 is 0
+    a = filtered.next()
+    test.equal(a.value, 2, "first number to pass the filter should be two")
+    b = filtered.next()
+    test.equal(b.value, 4, "second number to pass the filter should be four")
+    test.done()
+
+  'sucGenerator works': (test) ->
+    a = @sucGenerator.next()
+    b = @sucGenerator.next()
+    test.equal(b.value, a.value + 1, "sucGenerator works")
     test.done()
 
   'returns an object': (test) ->

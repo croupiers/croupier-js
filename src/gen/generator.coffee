@@ -1,7 +1,8 @@
 'use strict'
 
 class Generator
-  constructor: (@fn, @done, @value=@fn()) ->
+  # Done is still just constantly false
+  constructor: (@fn, @done=no, @value) ->
 
   next: ->
     @value = @fn()
@@ -10,7 +11,14 @@ class Generator
 
   map: (fn) ->
     parentFn = @fn
-    new Generator (-> fn(parentFn())), no
+    new Generator -> fn(parentFn())
+
+  filter: (fn) ->
+    parentGen = @
+    new Generator ->
+      result = parentGen.next().value
+      result = parentGen.next().value while not fn(result)
+      result
 
 
 exports.generator =
